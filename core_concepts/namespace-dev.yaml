@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+# kubectl create -f <FILENAME>
+# kubectl create namespace dev
+# kubectl config set-context $(kubectl config urrent-context) --namespace=<NAMESPACE>
+# --all-namespaces

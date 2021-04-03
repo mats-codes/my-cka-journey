@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    ### This is just the pod ###s
+    metadata:
+      name: myapp-pod
+      label:
+        app: myapp
+
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+
+  replicas: 3
+  ## In case there are pods created BEFORE creation of replicaset
+  ## matches labels
+  selector: # Main Difference to ReplicationController
+    matchLabels:
+      type: front-end
+# kubectl create -f <FILENAME>
+# kubectl get replicaset
+# kubectl delete replicaset <REPLICASET_NAME> <-- Also deletes underlying pods
+# kubectl replace -f <FILENAME>
+# kubectl scale --replicas=6 -f <FILENAME>
