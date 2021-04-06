@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitoring-daemon
+  labels:
+    app: monitoring-agent
+spec:
+  template:
+    ### This is just the pod ###s
+    metadata:
+      name: monitoring-agent
+      labels:
+        app: monitoring-agent
+
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+
+  selector:
+    matchLabels:
+      app: monitoring-agent

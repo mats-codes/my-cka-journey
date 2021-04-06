@@ -10,7 +10,7 @@ spec:
     ### This is just the pod ###s
     metadata:
       name: myapp-pod
-      label:
+      labels:
         app: myapp
 
     spec:

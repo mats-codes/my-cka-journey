@@ -1,0 +1,23 @@
+apiVersion: v1
+
+kind: pod
+
+metadata:
+  name: myapp-pod
+  label:
+    tier: frontend
+
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+
+  resources:
+    requests:
+      memory: '1Gi'
+      cpu: 1 # 100m
+    limits: # Maximum of resources that the node allows the container to consume
+      memory: '2Gi'
+      cpu: 2
+# kubectl edit pod <PODNAME>
+# kubectl edit deployment <DEPLOYMENT_NAME>
