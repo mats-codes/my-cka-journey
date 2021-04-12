@@ -1,0 +1,2 @@
+# docker volume create data_volume
+# docker run -v data_volume:/var/lib/mysql mysql

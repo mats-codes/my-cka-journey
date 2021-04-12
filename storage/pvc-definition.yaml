@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  # storageClassName: <NAME>
+  resources:
+    requests:
+      storage: 500Mi
+# persistentVolumeReclaimPoicy: Retain/Delete/Recycle
