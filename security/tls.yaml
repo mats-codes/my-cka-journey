@@ -1,0 +1,17 @@
+# openssl genrsa -put ca.key 2048
+# openssl req -new -key ca.key -subj "/CN=KUBERNETES_CA" -out ca.csr
+# openssl x509 -req -in ca.csr -signkey ca.key -out ca.crt
+#
+#
+# openssl genrsa -out admin.key 2048
+# openssl req -new -key admin.key -subj "/CN=kube-admin/O=system:masters" -out admin.csr
+# openssl x509 -req -in admin.csr -CA ca.crt -CAkey ca.key -our admin.crt
+#
+#
+# openssl req -new -key apiserver.key -subj "/CN=kube-apiserver" -out apiserver.csr
+# create an openssl.cnf to add additional names and ips
+# openssl x509 -req -in apiserver.csr -CA ca.crt -CAkey ca.key -out apiserver.crt
+# create all the kubeapi-server client-certificates
+#
+#
+# openssl x509 -text -noout -in apiserver.crt

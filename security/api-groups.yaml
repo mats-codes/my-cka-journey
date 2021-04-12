@@ -1,0 +1,8 @@
+# curl http://localhost:6443 -k <-- asks kube-apiserver
+#
+# curl http://localhost:6443 -k
+# --key admin.key
+# --cert admin.crt
+# --cacert ca.crt
+#
+# curl http://localhost:8001 -k <-- asks kubectl proxy which uses the certs automatically

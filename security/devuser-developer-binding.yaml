@@ -1,0 +1,20 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: devuser-developer-binding
+  #namespace:
+subjects:
+  - kind: User
+    name: dev-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
+  #resourceNames: ["podname1"]
+# kubectl get roles
+# kubectl get rolebindings
+# kubectl describe role developer
+#
+# kubectl auth can-i create deployments
+# kubectl auth can-i create deployments --as dev-user
