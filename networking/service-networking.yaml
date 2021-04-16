@@ -1,0 +1,4 @@
+# iptables -L -t net | grep db-service
+# cat /var/log/kube-proxy.log
+# kubectl logs pod/weave-net-rsmmq -n kube-system weave | grep ipalloc <-- Get Pod IP-Range
+# cat /etc/kubernetes/manifests/kube-apiserver.yaml | grep cluster-ip-range <-- Get IP-Range of services

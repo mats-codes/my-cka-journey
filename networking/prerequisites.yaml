@@ -1,0 +1,57 @@
+### Switching & Routing
+# ip link
+# ip addr
+# ip addr add 192.168.1.10/24 dev eth0
+# ip route
+# ip route add 192.168.1.0/24 via 192.168.2.1
+# route
+# cat /proc/sys/net/ipv4/ip_forward
+# ip route show default
+# netstat -nplt
+#
+#
+### DNS
+# /etc/hosts
+# /etc/resolv.conf
+#
+#
+### Network namespaces
+# ip netns add red
+# ip net ns
+# ip netns exec red ip link === ip -n red
+#
+# CONNECTING Namespaces
+# ip link add veth-red type veth peer name veth-blue
+# ip link set veth-red netns red
+# ip link set veth-blue netns blue
+# ip -n red addr add 192.168.15.1 dev veth-red
+# ip -n blue addr add 192.168.15.2 dev veth-blue
+# ip -n red link set veth-red up
+# ip -n blue link set veth-blue up
+# Deletion: ip link delete veth-red
+#
+# CREATING A VIRTUAL SWITCH
+# ip link add v-net-0 type bridge
+# ip link set dev v-net-0 up
+# ip link add veth-red type veth peer name veth-red-br
+# ip link add veth-blue type veth peer name veth-blue-br
+# ip link set veth-red netns red
+# ip link set veth-red-br master v-net-0
+# ip link set veth-blue netns blue
+# ip link set veth-blue-br master v-net-0
+# ip -n red addr add 192.168.15.1 dev veth-red
+# ip -n blue addr add 192.168.15.2 dev veth-blue
+# ip -n red link set veth-red up
+# ip -n blue link set veth-blue up
+#
+# ip addr add 192.168.15.5/24 dev v-net-0   <-- This adds an ip of the virtual network to the actual host which enables connection between host and virtual interfaces
+# ip netns exec blue ip route add 192.168.1.0/24 via 192.168.15.5 <-- This makes the host to the gateway for the virtual interface into the lan
+# iptables -t nat -A POSTROUTING -s 192.168.15.0/24 -j MASQUERADE <-- Enables NATting on the host
+# iptables -t nat -A PREROUTING --dport 80 --to-destination 192.168.15.2:80 -j DNAT <-- Everything that goes to 80 on host will be forwarded to 80 on virtual network interface
+#
+#
+# DOCKER NETWORKING
+# --network none
+# --network host
+# --network bridge
+# iptables -nvL -t nat <-- lists rules created by docker

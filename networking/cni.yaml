@@ -1,0 +1,3 @@
+# ps aux | grep kubelet
+# ls /etc/cni/net.d/
+# ip addr show weave
