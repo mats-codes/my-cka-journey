@@ -1,0 +1,20 @@
+### Applications
+#
+
+### Control Plane
+# kubectl get nodes
+# kubectl get pods
+# kubectl logs kube-api-server-master -n kube-system
+# sudo journalctl -u kube-apiserver
+# https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/
+
+### Worker Node
+# kubectl describe node worker-1
+# top
+# df -h
+# service kubelet status
+# sudo journalctl -u kubelet
+# openssl x509 -in /var/lib/kubelet/worker-1.crt -text
+## Issuer, Validity, O = system:nodes
+
+### Networks
