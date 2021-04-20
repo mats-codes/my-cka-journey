@@ -1,3 +1,5 @@
+# kubectl get ingress --all-namespaces
+
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -35,12 +37,13 @@ spec:
     - host: wear.my-online-store.com
       http:
         paths:
-        - backend:
-            serviceName: wear-service
-            servicePort: 80
+          - backend:
+              serviceName: wear-service
+              servicePort: 80
     - host: watch.my-online-store.com
       http:
-        paths: /watch
-        - backend:
-            serviceName: watch-service
-            servicePort: 80
+        paths:
+          - path: /watch
+          - backend:
+              serviceName: watch-service
+              servicePort: 80
