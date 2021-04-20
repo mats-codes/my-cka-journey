@@ -1,5 +1,10 @@
 ### Applications
-#
+# curl http://<WEB_SERVICE_IP>:<NODE_PORT>
+# kubectl describe service web-service
+## Selectors? EndPoints?
+# kubectl get pod
+# kubectl describe pod web
+# kubectl logs web (-f --previous)
 
 ### Control Plane
 # kubectl get nodes
@@ -18,3 +23,7 @@
 ## Issuer, Validity, O = system:nodes
 
 ### Networks
+# proxy . /etc/resolv.conf
+# kubectl -n kube-system get ep kube-dns
+# ubectl describe ds kube-proxy -n kube-system
+# /var/lib/kube-proxy/config.conf
