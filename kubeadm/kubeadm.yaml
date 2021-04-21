@@ -1,0 +1,19 @@
+### install kubeadm
+# sudo apt-get update
+# sudo apt-get install -y kubelet kubeadm kubectl
+# sudo apt-mark hold kubelet kubeadm kubectl
+#
+#
+### setup master node
+# kubeadm init --pod-network-cidr 10.244.0.0/16 --apiserver-advertise-address=<MASTER_NODE_IP>
+# Then, do what the terminal says!
+#
+#
+#
+### setup worker node
+# simply copy&paste the command that the master output
+#
+#
+#
+### install pod network (example weave:)
+# kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
