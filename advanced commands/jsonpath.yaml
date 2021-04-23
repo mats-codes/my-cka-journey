@@ -1,0 +1,8 @@
+# $[?(@ > 40)]   >/</==/!=
+# kubectl get nodes -o=jsonpath='{.items[*].metadata.name}{"\n"}{.items[*].status.capacity.cpu}'
+# kubectl get nodes -o=jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.capacity.cpu}{"\n"}{end}'
+# kubectl get nodes -o=custom-columns=NODE:.metadata.name,CPU:.status.capacity.cpu
+# kubectl get nodes --sort-by= .status.capacity.cpu
+#   kubectl get pv --sort-by=.spec.capacity.storage > /opt/outputs/storage-capacity-sorted.txt
+# kubectl config view --kubeconfig=/root/my-kube-config -o json
+# kubectl config view --kubeconfig=my-kube-config -o jsonpath="{.contexts[?(@.context.user=='aws-user')].name}" > /opt/outputs/aws-context-name
