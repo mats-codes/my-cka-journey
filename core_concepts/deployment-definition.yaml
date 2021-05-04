@@ -10,7 +10,7 @@ spec:
     ### This is just the pod ###
     metadata:
       name: myapp-pod
-      label:
+      labels:
         app: myapp
         type: front-end
 
@@ -25,7 +25,9 @@ spec:
     matchLabels:
       type: front-end
 # kubectl create -f <FILENAME>
+# kubectl create deployment <NAME> --image=<IMAGE> <-- therafter we can use the scale command
 # kubectl get deployments
 # kubectl delete deployment <REPLICASET_NAME> <-- Also deletes underlying pods
 # kubectl replace -f <FILENAME>
 # kubectl scale --replicas=6 -f <FILENAME>
+# kubectl set image deployment/nginx-deploy nginx-container=nginx:1.17 --record
